@@ -1,0 +1,104 @@
+﻿@model BooksCreateVM
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-info">Add Category</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Books.Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Books.Name" class="form-control" />
+                        <span asp-validation-for="Books.Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Books.NameAuthor"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Books.NameAuthor" class="form-control" />
+                        <span asp-validation-for="Books.NameAuthor" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Books.Short_content"></label>
+                    </div>
+                    <div class="col-8">
+                        <textarea asp-for="Books.Short_content" class="form-control"></textarea>
+                        <span asp-validation-for="Books.Short_content" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Books.Year"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Books.Year" class="form-control">
+                        <span asp-validation-for="Books.Year" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Books.Count"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Books.Count" class="form-control" />
+                        <span asp-validation-for="Books.Count" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Books.CategoryId"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="Books.CategoryId" asp-items="@Model.CategorySelectList" class="form-control">
+                            < option  disabled  selected > Please select Category </ option >
+                        </select>
+                        <span asp-validation-for="Books.Short_content" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col">
+                        <input type="submit" value="Create" class="btn btn-info" onclick="return validateInput()" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-success">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section ScriptsValidate {
+    <script>
+        function validateInput() {
+            console.log(document.getElementById("uploadBox").value);
+            if (document.getElementById("uploadBox").value == "") {
+                Swal . fire (
+                    'Error!',
+                    'Please upload an Image!',
+                    'error'
+                )
+                return false;
+            }
+            return true;
+        }
+    </script>
+}

@@ -1,0 +1,31 @@
+﻿@model List<Books>
+
+<h1>Product Page</h1>
+
+<div>
+    <div>
+        <a asp-action="Create" class="btn btn-primary">Create New Product</a>
+    </div>
+</div>
+
+<p>
+    @ViewBag.Message
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+
+
+            <div class="caption">
+                <h3>@item.Count.ToString("c")</h3>
+                <h3>@item.Name</h3>
+                <h4>@item.Category.CategoryName</h4>
+                <p>@item.Year</p>
+                <p>@item.Short_content</p>
+            </div>
+        </div>
+
+    }
+</div>

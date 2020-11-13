@@ -1,0 +1,82 @@
+﻿@model List<Books>
+<div>
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Product List</h2>
+        </div>
+
+        <div class="col-6">
+            <a asp-controller="Product" asp-action="Create" class="btn btn-primary">
+                Create New Product
+            </a>
+        </div>
+    </div>
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Year
+                    </th>
+                    <th>
+                        Count
+                    </th>
+                    <th>
+                        NameAuthor
+                    </th>
+
+                    <th>
+                        CategoryName
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var books in Model)
+                {
+                    <tr>
+                        <td width="10%">
+                            @books.Name
+                        </td>
+                        <td width="10%">
+                            @books.Year
+                        </td>
+                        <td width="10%">
+                            @books.Count
+                        </td>
+                        <td width="10%">
+                            @books.NameAuthor
+                        </td>
+
+                        <td width="10%">
+                            @books.Category.CategoryName
+                        </td>
+                        <td width="20%">
+                            <div>
+                                <a asp-controller="Books" asp-action="Edit" asp-route-Id="@books.Id" class="btn btn-primary">Edit</a>
+                                <a asp-controller="Books" asp-action="Delete" asp-route-Id="@books.Id" class="btn btn-danger">Delete</a>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+
+    }
+    else
+    {
+        < P > Kh umbrella ng  t oh n  t sir i  th To worry sir i  in  the database </ p >
+    }
+
+
+</div>
